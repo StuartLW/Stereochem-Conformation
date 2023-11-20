@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="main.css" />
+
+<head>
+	<title>Stereochemistry UoL</title>
+</head>
+
+<body>
+	<div class="header" onclick="mol2d.fitToScreen()">
+		<p
+			style="position: absolute;float: left;left: 25px;bottom: 17px;margin:0px; font-size: 24px;color: white;font-family: 'tradegothicltcom',sans-serif;font-weight: bold;text-shadow: 3px 4px 20px black;">
+			School of Chemistry - Stereochemistry</p>
+		<p id="dev" style="color:white"></p>
+		<a href="http://www.leeds.ac.uk/"><img src="./unileeds.svg" alt="University of Leeds"
+				style="position: relative;float: right;right: 20px;top: 22px;margin-bottom: 35px;width: 183px" /></a>
+
+		<script type="text/javascript">
+			window.cookieconsent_options = { "message": "This website uses cookies to ensure you get the best experience. Google cookies are also used to help us track use of and make improvements.", "dismiss": "Got it!", "learnMore": "More info", "link": "http://www.leeds.ac.uk/privacy", "theme": "dark-bottom" };
+		</script>
+		<script type="text/javascript"
+			src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
+
+	</div>
+
+	<div class="page">
+		<div id="gameFrame">
+			<div class="help" style="display:none">
+				<p>?</p>
+			</div>
+			<div class="view3D" style="width:1020px; height:431px;"></div>
+			<div class="view2D" style="height:0px; "></div>
+
+			<div class="menu" id="root" style="top: 431px;">
+				<div style="left: 0px; top: 0px;">
+					<h1>Revision Type</h1>
+					<button class="button" tabindex=-1 onclick="MenuView( 'CIP' )" style="height: 53px;">Cahn - Ingold -
+						Prelog</button>
+					<button class="button" tabindex=-1 onclick="MenuView( 'Newman' )"
+						style="height: 53px;float:right;">Newman Projections</button>
+				</div>
+				<div style="left: 1020px; top: -240px;">
+					<h1>Cahn-Ingold-Prelog Rule</h1>
+					<button class="button" tabindex=-1 onclick="MenuView( 'root' )"
+						style="width:100px;float: left;height: 179px;">Back</button>
+					<button class="button" tabindex=-1 onclick="cip = new CIP( 1 )"
+						style="height: 53px;">Easy</button><br>
+					<button class="button" tabindex=-1 onclick="cip = new CIP( 2 )"
+						style="height: 53px;">Medium</button><br>
+					<button class="button" tabindex=-1 onclick="cip = new CIP( 3 )" style="height: 53px;">Hard</button>
+				</div>
+				<div style="left: 2040px; top: -480px;">
+					<h1>Newman Projections</h1>
+					<button class="button" tabindex=-1 onclick="MenuView( 'root' )"
+						style="width:100px;float: left;height: 179px;">Back</button>
+					<div>
+						<div style="float:left; width:49%;">
+							<h1>3D/2D to Newman</h1>
+							<button class="button" tabindex=-1 onclick="nm = new Newman( 1, 1 )"
+								style="height: 53px; width: 100%;">Easy</button><br>
+							<button class="button" tabindex=-1 onclick="nm = new Newman( 1, 2 )"
+								style="height: 53px; width: 100%;">Hard</button><br>
+						</div>
+						<div style="float:left; width:49%;">
+							<h1>Newman to 2D</h1>
+							<button class="button" tabindex=-1 onclick="nm = new Newman( 2, 1 )"
+								style="height: 53px; width: 100%;">Easy</button><br>
+							<button class="button" tabindex=-1 onclick="nm = new Newman( 2, 2 )"
+								style="height: 53px; width: 100%;">Hard</button><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="menu" id="CIPinputs" style="top: 431px;">
+				<div class="head" style="padding: 5px 0px 10px 0px;">
+					<h1>Cahn-Ingold-Prelog Rule</h1>
+				</div>
+				<div class="inputs" style="height:125px;">
+					<div id="CIPrank" style="float: left; width: 600px; height: 120px;"></div>
+					<div id="CIPtoggles" style="float: right;width: 420px;">
+						<label class="switch">
+							<input type="checkbox">
+							<span class="slider" id="handedness1"></span>
+							<h2 style="float: left;">Clockwise</h2>
+							<h2 style="float: right;">Anticlockwise</h2>
+						</label>
+						<label class="switch">
+							<input type="checkbox">
+							<span class="slider" id="handedness2"></span>
+							<h2 style="float: left;">R</h2>
+							<h2 style="float: right;">S</h2>
+						</label>
+					</div>
+				</div>
+				<div class="buttons">
+					<button class="button" tabindex=-1 onclick="cip.closeGame()"
+						style="width:100px;float: right;margin-right: 15px;">Back</button>
+					<button class="button" tabindex=-1 onclick="cip.init( true )"
+						style="width:100px;float: right;">Skip</button>
+					<button class="button" tabindex=-1 onclick="cip.submit()"
+						style="width:100px;float: right;">Submit</button>
+				</div>
+			</div>
+			<div class="menu" id="NMinputs"
+				style="top: 431px;left: 235px;height: 350px;width: 550px;border: 6px solid #3e546b;">
+				<div class="head">
+					<h1>Newman Projection</h1>
+				</div>
+				<div class="inputs" style="width: 550px; height: 255px;">
+				</div>
+				<div class="buttons">
+					<!-- <label style="position: absolute; top: 40px;"><input type="checkbox" onchange="nm.orient( this.checked )"/>Staggered/Eclipse</label> -->
+					<button class="button" tabindex=-1 onclick="nm.closeGame()"
+						style="width:100px;float: right;margin-right: 10px;">Back</button>
+					<button class="button" tabindex=-1 onclick="nm.init( true )"
+						style="width:100px;float: right;">Skip</button>
+					<button class="button" tabindex=-1 onclick="nm.submit()"
+						style="width:100px;float: right;">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="../Scripts/openchemlib-full.pretty.js"></script>
+	<script src="../Scripts/three.min.js"></script>
+	<script src="../Scripts/stats.min.js"></script>
+	<script src="../Scripts/Detector.js"></script>
+	<script src="../Scripts/TrackballControls.js"></script>
+	<script src="../Scripts/OutlineEffect.js"></script>
+	<script src="../Scripts/molViewer.js"></script>
+	<script src="stereochem.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106347776-3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push( arguments ); }
+		gtag( 'js', new Date() );
+
+		gtag( 'config', 'UA-106347776-3' );
+
+		function stat( text ) {
+
+			d3.select( "#dev" ).html( text )
+
+		}
+
+	</script>
+
+</body>
