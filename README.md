@@ -1,7 +1,7 @@
 # Stereochemistry and Conformation
 Interactive tools to help students learn aspects of conformation and stereochemistry in organic chemistry
 # Webpages
-The webpage for working out cyclohexane conformations is https://stuartlw.github.io/Stereochem-Conformation/Ring/ <br>
+The webpage for working out cyclohexane conformations is https://stuartlw.github.io/Stereochem-Conformation/Ring/  
 The webpage for R/S Cahn Ingold Prelog Rules and Newman projectiosn is https://stuartlw.github.io/Stereochem-Conformation/Stereochemistry/
 
 # Background
